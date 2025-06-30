@@ -39,11 +39,30 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from "vue-router";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '@/firebase/config'
+
 const password = ref('')
 const email = ref('')
 
+const router = useRouter()
 
+const handleLogin = async () => {
+  try {
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email.value,
+      password.value
+    );
+    console.log("Login uspješan", userCredential.user);
 
+    router.push("/feed");
+  } catch (error) {
+    console.error("Login neuspješan:", error);
+    
+  }
+};
 
 </script>
 
