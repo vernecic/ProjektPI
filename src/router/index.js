@@ -1,6 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
 
 import RegisterPage from "@/views/RegisterPage.vue";
+import LoginPage from "@/views/LoginPage.vue"
 
 const routes = [
   {
@@ -10,6 +11,10 @@ const routes = [
   {
     path: '/register',
     redirect: '/'
+  },
+  {
+    path: '/login',
+    component: LoginPage
   }
 ];
 

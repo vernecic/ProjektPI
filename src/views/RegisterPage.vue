@@ -5,7 +5,7 @@
     </div>
     <div class="flex min-h-screen items-center justify-start flex-1/2">
       <div class="flex flex-col">
-      <h1 class="text-4xl font-semibold text-zinc-800">Register</h1>
+      <h1 class="text-4xl font-semibold text-zinc-700">Register</h1>
         <div class="grid grid-cols-2 gap-4 mt-5">
          
              <div class="flex flex-col ">
@@ -31,11 +31,13 @@
           Account type: <button class="cursor-pointer hover:shadow-md hover:bg-zinc-300 p-2">Buyer </button> / <button class="cursor-pointer hover:shadow-md hover:bg-zinc-300 p-2">Seller</button> 
         </div>
         <div class="mt-5">
-          <button class="rounded border px-2 py-1 text-xl cursor-pointer hover:bg-zinc-200 shadow-md">Register</button>
+          <button class="rounded border px-2 py-1 text-xl cursor-pointer hover:bg-zinc-200 shadow-md" @click="handleRegister">Register</button>
 
         </div>
         <div class="mt-5">
-          <span>Already have an account?</span> <button class="rounded border px-2 py-1 ml-2 hover:bg-zinc-200 transition duration-200 cursor-pointer shadow-md">Login</button>
+          <span>Already have an account?</span> 
+          <router-link to="/login">
+          <button class="rounded border px-2 py-1 ml-2 hover:bg-zinc-200 transition duration-200 cursor-pointer shadow-md">Login</button></router-link>
         </div>
       </div>
       
@@ -51,7 +53,12 @@ const password = ref('')
 const confirmPassword = ref('')
 const email = ref('')
 
-/* const type = ref('Buyer') */
+
+// Funkcije
+const handleRegister = () =>{
+
+}
+ 
 
 </script>
 
