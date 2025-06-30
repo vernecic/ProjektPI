@@ -50,12 +50,13 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, } from 'vue'
 import { auth } from '@/firebase/config'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { errorMessages } from 'vue/compiler-sfc'
+
 import { doc, setDoc } from 'firebase/firestore'
 import { db } from '@/firebase/config'
+import { useRouter } from "vue-router"
 
 const username = ref('')
 const password = ref('')
@@ -65,6 +66,7 @@ const role = ref('')
 const isError = ref(false)
 const errorMessage = ref('')
 
+const router = useRouter()
 
 // Funkcije
 function selectType(type){
@@ -100,6 +102,7 @@ const handleRegister = async() => {
       balance: 0
     });
     console.log('Register uspješan!: ', user)
+    router.push('/login')
   } catch (error){
     isError.value = true;
     errorMessage.value = error
