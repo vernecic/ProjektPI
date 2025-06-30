@@ -7,4 +7,4 @@ import router from "./router/index.js";
 
 const pinia = createPinia();
 
-createApp(App).use(router).mount("#app");
+createApp(App).use(router).use(pinia).mount("#app");

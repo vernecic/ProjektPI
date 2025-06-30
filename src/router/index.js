@@ -1,6 +1,17 @@
 import { createWebHistory, createRouter } from "vue-router";
 
-const routes = [];
+import RegisterPage from "@/views/RegisterPage.vue";
+
+const routes = [
+  {
+    path: "/",
+    component: RegisterPage,
+  },
+  {
+    path: '/register',
+    redirect: '/'
+  }
+];
 
 const router = createRouter({
   history: createWebHistory(),
