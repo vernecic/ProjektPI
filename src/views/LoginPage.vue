@@ -23,13 +23,13 @@
         </div>
     
         <div class="mt-5">
-          <button class="rounded border px-2 py-1 text-xl cursor-pointer hover:bg-zinc-200 shadow-md" @click="handleLogin">Login</button>
+          <button class="rounded border px-2 py-1 text-2xl cursor-pointer hover:bg-zinc-200 shadow-md" @click="handleLogin">Login</button>
 
         </div>
         <div class="mt-5">
           <span>Don't have an account?</span> 
           <router-link to="/register">
-          <button class="rounded border px-2 py-1 ml-2 hover:bg-zinc-200 transition duration-200 cursor-pointer shadow-md">Register</button></router-link>
+          <button class="rounded border text-lg px-2 py-1 ml-2 hover:bg-zinc-200 transition duration-200 cursor-pointer shadow-md">Register</button></router-link>
         </div>
       </div>
       
@@ -39,10 +39,7 @@
 
 <script setup>
 import { ref } from 'vue'
-
-const username = ref('')
 const password = ref('')
-const confirmPassword = ref('')
 const email = ref('')
 
 

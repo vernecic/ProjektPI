@@ -28,16 +28,20 @@
           
         </div>
         <div class="mt-5">
-          Account type: <button class="cursor-pointer hover:shadow-md hover:bg-zinc-300 p-2">Buyer </button> / <button class="cursor-pointer hover:shadow-md hover:bg-zinc-300 p-2">Seller</button> 
+          Account type: <button class="cursor-pointer hover:shadow-md hover:bg-zinc-300 p-2 " :class="{'bg-zinc-300': role === 'buyer'}" @click="selectType('buyer')">Buyer </button> / <button class="cursor-pointer hover:shadow-md hover:bg-zinc-300 p-2" :class="{'bg-zinc-300': role === 'seller'}" @click="selectType('seller')">Seller</button> 
+        </div>
+        <div v-if="isError">
+          <span class="text-xl text-red-500">{{ errorMessage }}</span>
+
         </div>
         <div class="mt-5">
-          <button class="rounded border px-2 py-1 text-xl cursor-pointer hover:bg-zinc-200 shadow-md" @click="handleRegister">Register</button>
+          <button class="rounded border px-2 py-1 text-2xl cursor-pointer hover:bg-zinc-200 shadow-md" @click="handleRegister">Register</button>
 
         </div>
         <div class="mt-5">
           <span>Already have an account?</span> 
           <router-link to="/login">
-          <button class="rounded border px-2 py-1 ml-2 hover:bg-zinc-200 transition duration-200 cursor-pointer shadow-md">Login</button></router-link>
+          <button class="rounded border text-lg px-2 py-1 ml-2 hover:bg-zinc-200 transition duration-200 cursor-pointer shadow-md">Login</button></router-link>
         </div>
       </div>
       
@@ -46,19 +50,63 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
+import { auth } from '@/firebase/config'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { errorMessages } from 'vue/compiler-sfc'
+import { doc, setDoc } from 'firebase/firestore'
+import { db } from '@/firebase/config'
 
 const username = ref('')
 const password = ref('')
 const confirmPassword = ref('')
 const email = ref('')
+const role = ref('')
+const isError = ref(false)
+const errorMessage = ref('')
 
 
 // Funkcije
-const handleRegister = () =>{
+function selectType(type){
+    role.value = type
+}
+
+const handleRegister = async() => {
+  errorMessage.value = ''
+  if(!username.value || !email.value || !password.value || !confirmPassword.value){
+    isError.value = true;
+    errorMessage.value = 'All fields required!'
+    return
+  }
+  if(password.value !== confirmPassword.value){
+    isError.value = true;
+    errorMessage.value = 'Passwords do not match!'
+  }
+  if(!role.value){
+    isError.value = true;
+    errorMessage.value = 'Select an account type!'
+  }
+
+  try {
+
+    const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value)
+    const user = userCredential.user
+
+    await setDoc(doc(db, 'users', user.uid),{
+      username: username.value,
+      email: email.value,
+      role: role.value,
+      createdAt: new Date(),
+      balance: 0
+    });
+    console.log('Register uspješan!: ', user)
+  } catch (error){
+    isError.value = true;
+    errorMessage.value = error
+  }
+
 
 }
- 
 
 </script>
 
