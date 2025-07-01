@@ -38,14 +38,18 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from "vue-router";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '@/firebase/config'
+import { useUserStore } from '@/stores/users';
+
+
 
 const password = ref('')
 const email = ref('')
 
+const userStore = useUserStore()
 const router = useRouter()
 
 const handleLogin = async () => {
@@ -55,14 +59,28 @@ const handleLogin = async () => {
       email.value,
       password.value
     );
+    const user = userCredential.user
+    const role = await userStore.fetchRole(user.uid)
+
+    if(role === 'buyer'){
+      router.push('/buyer-feed')
+    }
+    else if(role === 'seller'){
+      router.push('/seller-feed')
+    }
+    else if(role === 'admin'){
+      router.push('/admin-feed')
+    }
+
     console.log("Login uspješan", userCredential.user);
 
-    router.push("/feed");
+   
   } catch (error) {
     console.error("Login neuspješan:", error);
     
   }
 };
+
 
 </script>
 
