@@ -8,6 +8,7 @@ import LoginPage from "@/views/LoginPage.vue"
 import BuyerFeed from "@/views/BuyerFeed.vue"
 import SellerFeed from "@/views/SellerFeed.vue";
 import AdminFeed from "@/views/AdminFeed.vue";
+import CreateListing from "@/views/CreateListing.vue"
 
 const routes = [
   {
@@ -33,6 +34,10 @@ const routes = [
   {
     path: '/admin-feed',
     component: AdminFeed
+  },
+  {
+    path: '/create-listing',
+    component: CreateListing
   }
 ];
 

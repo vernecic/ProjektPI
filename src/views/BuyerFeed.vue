@@ -1,7 +1,8 @@
 <template>
-    <Header></Header>
+    <BuyerNavbar/>
+
 </template>
 
 <script setup>
-import Header from '@/components/Header.vue'
+import BuyerNavbar from '@/components/BuyerNavbar.vue'
 </script>
