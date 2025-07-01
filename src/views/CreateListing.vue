@@ -61,6 +61,7 @@ const isError = ref(false)
 const errorMessage = ref('')
 
 
+// zove pinia userinfo
 onMounted(async () => {
   const user = auth.currentUser
   if(user && !userStore.username) {
