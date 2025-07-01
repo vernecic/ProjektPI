@@ -2,7 +2,7 @@ import { createWebHistory, createRouter } from "vue-router";
 
 import RegisterPage from "@/views/RegisterPage.vue";
 import LoginPage from "@/views/LoginPage.vue"
-import HomePage from "@/views/HomePage.vue"
+import BuyerFeed from "@/views/BuyerFeed.vue"
 
 const routes = [
   {
@@ -18,8 +18,16 @@ const routes = [
     component: LoginPage
   },
   {
-    path: '/feed',
-    component: HomePage
+    path: '/buyer-feed',
+    component: BuyerFeed
+  },
+   {
+    path: '/seller-feed',
+    component: SellerFeed
+  },
+  {
+    path: '/admin-feed',
+    component: AdminFeed
   }
 ];
 
