@@ -7,7 +7,7 @@
         <div class="text-xl ">
             <ul class="flex space-x-8">
                 <li class="cursor-pointer">Home</li>
-                <li class="cursor-pointer">Orders</li>
+               
                 <li class="cursor-pointer " >
                   <p role="button" @click="handleSignOut">
                     Sign out

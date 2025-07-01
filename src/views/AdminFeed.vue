@@ -1,6 +1,6 @@
 <template>
-    <Header></Header>
+    <AdminNavbar/>
 </template>
 <script setup>
-import Header from '@/components/Header.vue';
+import AdminNavbar from '@/components/AdminNavbar.vue';
 </script>

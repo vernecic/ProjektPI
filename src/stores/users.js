@@ -22,10 +22,12 @@ export const useUserStore = defineStore('user', () => {
     }
   }
 
-  function clearUser() {
-    uid.value = null
-    role.value = null
-  }
+function clearUser() {
+  uid.value = null
+  role.value = null
+  username.value = null
+  email.value = null
+}
 
   const fetchUserInfo = async (uid) => {
     try {
