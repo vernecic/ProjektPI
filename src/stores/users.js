@@ -8,19 +8,9 @@ export const useUserStore = defineStore('user', () => {
   const uid = ref(null)
   const username = ref(null)
   const email = ref(null)
+  const balance = ref(null)
 
-  async function fetchRole(userId) {
-    const userRef = doc(db, 'users', userId)
-    const userSnap = await getDoc(userRef)
-    if (userSnap.exists()) {
-      const data = userSnap.data()
-      role.value = data.role
-      uid.value = userId
-      return data.role
-    } else {
-      throw new Error('User document not found')
-    }
-  }
+
 
 function clearUser() {
   uid.value = null
@@ -38,7 +28,8 @@ function clearUser() {
         const data = userSnap.data()
         role.value = data.role
         username.value = data.username
-        email.value = data.email || null
+        email.value = data.email
+        balance.value = data.balance || 0
         return data.role 
       } else {
         console.error('Error!')
@@ -54,7 +45,7 @@ function clearUser() {
     uid,
     username,
     email,
-    fetchRole,
+    balance,
     clearUser,
     fetchUserInfo
   }
