@@ -2,6 +2,10 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { doc, getDoc } from 'firebase/firestore'
 import { db } from '@/firebase/config'
+import { onMounted, watch } from 'vue'
+import { useListingsStore } from './listings'
+
+
 
 export const useUserStore = defineStore('user', () => {
   const role = ref(null)
@@ -17,6 +21,23 @@ function clearUser() {
   role.value = null
   username.value = null
   email.value = null
+} 
+  async function fetchRole(userId) {
+  try {
+    const userRef = doc(db, 'users', userId)
+    const userSnap = await getDoc(userRef)
+
+    if (userSnap.exists()) {
+      const data = userSnap.data()
+      return data.role || null
+    } else {
+      console.error('Korisnik nije pronađen')
+      return null
+    }
+  } catch (error) {
+    console.error('Greška:', error)
+    throw error
+  }
 }
 
   const fetchUserInfo = async (uid) => {
@@ -30,6 +51,10 @@ function clearUser() {
         username.value = data.username
         email.value = data.email
         balance.value = data.balance || 0
+
+        const listingsStore = useListingsStore()
+        await listingsStore.fetchListings()
+
         return data.role 
       } else {
         console.error('Error!')
@@ -45,6 +70,7 @@ function clearUser() {
     uid,
     username,
     email,
+    fetchRole,
     balance,
     clearUser,
     fetchUserInfo

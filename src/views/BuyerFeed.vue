@@ -1,6 +1,6 @@
 <template>
     <BuyerNavbar/>
-    <div class="flex items-center justify-center">
+    <div class="p-6 max-w-2xl mx-auto">
         <div class="mt-5">
             <h1>Balance</h1>
             <p>Current amount: {{ balance }}€</p>
@@ -12,6 +12,24 @@
 
                 </div>
             </div>
+        </div>
+        <div class="mt-5">
+          <h1 class="font-bold text-2xl mb-5">Listings</h1>
+          <div class="grid  lg:grid-cols-3 gap-4">
+          <ListingCard
+        v-for="listing in listings"
+        :key="listing.id"
+        :listing="listing"
+          ><div class="flex gap-4">
+          <button 
+            class="bg-green-600 text-white rounded-sm py-1 px-2 cursor-pointer" 
+            
+          >
+            Buy
+          </button>
+       
+        </div></ListingCard>
+       </div>
         </div>
 
     </div>
@@ -25,6 +43,21 @@ import { useUserStore } from '@/stores/users'
 import { doc, updateDoc } from 'firebase/firestore'
 import { auth, db } from '@/firebase/config'
 import { storeToRefs } from 'pinia'
+import ListingCard from '@/components/ListingCard.vue'
+import { useListingsStore } from '@/stores/listings'
+
+
+const listingsStore = useListingsStore()
+const listings = listingsStore.listings
+
+
+onMounted(async () => {
+  const user = auth.currentUser
+  if (user && !userStore.role) {
+    await userStore.fetchUserInfo(user.uid)
+  }
+  await listingsStore.fetchListings()
+})
 
 const userStore = useUserStore()
 const { balance } = storeToRefs(userStore)
@@ -71,4 +104,5 @@ const handleDeposit = async () =>{
 
 }
 
+const handleBuy = async()
 </script>

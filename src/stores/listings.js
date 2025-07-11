@@ -22,7 +22,8 @@ export const useListingsStore = defineStore('listings', () =>{
     } else if (userStore.role === 'buyer'){
         queryRef = query(
             collection(db, 'listings'),
-            where('approved', '==', true)
+            where('approved', '==', true),
+            where('buyer', '==', null)
 
         )
     }  else if(userStore.role === 'seller'){
@@ -32,6 +33,8 @@ export const useListingsStore = defineStore('listings', () =>{
             where('seller', '==', userStore.username)
         );
     }
+    console.log('Role is:', userStore.role)
+    console.log('QueryRef is:', queryRef)
     const querySnap = await getDocs(queryRef)
     listings.value = querySnap.docs.map(doc => ({id: doc.id, ...doc.data()}))
 

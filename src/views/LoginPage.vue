@@ -60,7 +60,8 @@ const handleLogin = async () => {
       password.value
     );
     const user = userCredential.user
-    const role = await userStore.fetchRole(user.uid)
+    await userStore.fetchUserInfo(user.uid)
+    const role = userStore.role
 
     if(role === 'buyer'){
       router.push('/buyer-feed')
