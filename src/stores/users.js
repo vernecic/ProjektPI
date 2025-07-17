@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { doc, getDoc } from 'firebase/firestore'
 import { db } from '@/firebase/config'
-import { onMounted, watch } from 'vue'
+
 import { useListingsStore } from './listings'
 
 
@@ -36,7 +36,7 @@ function clearUser() {
     }
   } catch (error) {
     console.error('Greška:', error)
-    throw error
+    throw new Error (error)
   }
 }
 
@@ -61,7 +61,7 @@ function clearUser() {
       }
     } catch (error) {
       console.error('Greška pri dohvaćanju podataka:', error)
-      throw error
+      throw new Error (error)
     }
   }
 

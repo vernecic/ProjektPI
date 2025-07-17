@@ -7,7 +7,7 @@
         </div>
             <div class="mt-5">
           <h1 class="font-bold text-2xl mb-5">Listings</h1>
-          <div class="grid  lg:grid-cols-3 gap-4">
+          <div class="grid grid-cols-3 gap-4">
           <ListingCard
         v-for="listing in listings"
         :key="listing.id"

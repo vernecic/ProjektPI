@@ -6,8 +6,13 @@
         </div>
         <div class="text-xl ">
             <ul class="flex space-x-8">
+              <router-link to="/buyer-feed">
                 <li class="cursor-pointer">Home</li>
+              </router-link>
+              <router-link to="/buyer-orders">
                 <li class="cursor-pointer">Orders</li>
+              </router-link>
+                
                 <li class="cursor-pointer " >
                   <p role="button" @click="handleSignOut">
                     Sign out

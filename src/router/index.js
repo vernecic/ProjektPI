@@ -9,6 +9,8 @@ import BuyerFeed from "@/views/BuyerFeed.vue"
 import SellerFeed from "@/views/SellerFeed.vue";
 import AdminFeed from "@/views/AdminFeed.vue";
 import CreateListing from "@/views/CreateListing.vue"
+import SellerOrders from "@/views/SellerOrders.vue";
+import BuyerOrders from "@/views/BuyerOrders.vue";
 
 const routes = [
   {
@@ -38,7 +40,16 @@ const routes = [
   {
     path: '/create-listing', // guard
     component: CreateListing
+  },
+  {
+    path: '/seller-orders',
+    component: SellerOrders
+  },
+  {
+    path: '/buyer-orders',
+    component: BuyerOrders
   }
+
 ];
 
 const router = createRouter({

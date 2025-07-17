@@ -17,8 +17,7 @@
 </template>
 
 <script setup>
-import { doc, updateDoc } from 'firebase/firestore'
-import { db } from '@/firebase/config'
+
 import { useListingsStore } from '@/stores/listings'
 
 const listingsStore = useListingsStore()
