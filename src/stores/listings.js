@@ -33,8 +33,7 @@ export const useListingsStore = defineStore('listings', () =>{
             where('seller', '==', userStore.username)
         );
     }
-    console.log('Role is:', userStore.role)
-    console.log('QueryRef is:', queryRef)
+
     const querySnap = await getDocs(queryRef)
     listings.value = querySnap.docs.map(doc => ({id: doc.id, ...doc.data()}))
 
