@@ -25,8 +25,11 @@ export const useOrdersStore = defineStore('orders', ()=>{
 }
        const fetchBuyerOrders = async(buyer) =>{
         try {
-            const orderQ = query(collection(db, 'orders'),
-        where('buyer', '==', buyer))
+            const orderQ = query(
+        collection(db, 'orders'),
+        where('buyer', '==', buyer),
+        where('status', '==', 'pending')
+        )
         
         const querySnap = await getDocs(orderQ)
         orders.value = querySnap.docs.map(doc =>({
@@ -40,12 +43,15 @@ export const useOrdersStore = defineStore('orders', ()=>{
 }   
     const fetchSellerApproved = async(buyer) => {
         try {
-            console.log('fetching...')
+        
             const confirmedQ = query(
                 collection(db, 'orders'),
                 where('buyer', '==', buyer),
                 where('sellerApproved', '==', true),
-                where('buyerApproved', '==', false)
+                where('buyerApproved', '==', false),
+                where('status', '==', 'sent')
+                
+                
             )
             const confirmedSnap = await getDocs(confirmedQ)
 

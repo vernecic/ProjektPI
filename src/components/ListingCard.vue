@@ -7,7 +7,7 @@
     />
     <h2 class="text-xl text-zinc-800 font-semibold">{{ listing.title }}</h2>
     <p class="text-slate-600 mb-2">{{ listing.description }}</p>
-    <p class="text-green-700 font-bold mb-2">€{{ listing.price }}</p>
+    <p class="text-emerald-500 font-bold mb-2">€{{ listing.price }}</p>
 
   
      <slot></slot>

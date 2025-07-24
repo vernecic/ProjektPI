@@ -30,7 +30,8 @@ export const useListingsStore = defineStore('listings', () =>{
         queryRef = query(
             collection(db, 'listings'),
             where('approved', '==', true),
-            where('seller', '==', userStore.username)
+            where('seller', '==', userStore.username),
+            where('buyer', '==', false)
         );
     }
 

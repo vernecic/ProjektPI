@@ -1,8 +1,10 @@
 <template>
-  <div class="border p-2 flex flex-col space-y-2 my-2 rounded-md">
+  <div class="border border-zinc-400 p-2 flex flex-col space-y-2 my-2 rounded-md shadow ">
                     <div>
                         You have made an order for <span class="font-bold">{{ order.title }}</span> by <span class="font-bold">{{ order.seller }}</span>. Price: <span class="font-bold">{{ order.price }}€  </span>                  </div>
-                       
+                        <div class="text-slate-500">
+                            Your dispute code: <span class="text-black font-semibold">{{order.disputeCode}}</span></div>
+                         <div ><button class="bg-amber-300 py-1 px-2 rounded-md cursor-pointer shadow-md hover:-translate-y-0.5 transition duration-200 hover:shadow-lg">Dispute</button></div>
                 </div>
 </template>
 

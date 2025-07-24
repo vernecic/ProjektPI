@@ -7,14 +7,7 @@
             <h1 class="text-2xl font-semibold">Orders</h1>
           </div> 
           <div class="mt-5">
-                <div v-for="order in ordersStore.orders" :key="order.orderId" class="border p-2 flex flex-col space-y-2 my-2 rounded-md">
-                    <div><span class="font-bold">{{ order.buyer }}</span> made an order for <span class="font-bold">{{ order.title }}</span> - <span class="font-bold">{{ order.price }}€</span></div>
-                    <div class="text-xs">ID: {{ order.listingId }}</div>
-                    <div class="">
-                        <p class="text-sm">
-                            Confirm shipment?
-                        </p><button class="bg-green-600 py-1 px-2 rounded text-white font-semibold cursor-pointer " @click="handleConfirm(order)">Confirm </button></div>
-                </div>
+            <OrderReceivedCard v-for="order in ordersStore.orders" :key="order.orderId" :order="order" @confirm="handleConfirm"></OrderReceivedCard>
           </div>
             
           </div>
@@ -26,6 +19,9 @@ import { useUserStore } from '@/stores/users';
 import { onMounted } from 'vue'
 import { updateDoc, doc } from 'firebase/firestore'
 import { db } from '@/firebase/config'
+import OrderReceivedCard from '@/components/OrderReceivedCard.vue';
+
+
 
 const userStore = useUserStore()
 const ordersStore = useOrdersStore()
@@ -38,11 +34,13 @@ onMounted(async()=>{
 
 // funkcije
 
+
 const handleConfirm = async (order) =>{
     try {
         const orderRef = doc(db, 'orders', order.id)
         await updateDoc(orderRef, {
-            sellerApproved: true
+            sellerApproved: true,
+            status: 'sent'
         
         
         })

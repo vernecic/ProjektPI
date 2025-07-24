@@ -6,7 +6,7 @@
             <p>Current amount: {{ balance }}€</p>
             <div class="flex gap-4">
                 <input type="number" v-model="amount" class="border rounded mt-2">
-                <button class="rounded mt-2 bg-green-500 text-white cursor-pointer font-semibold py-1 px-2" @click="handleDeposit">Deposit</button>
+                <button class="rounded mt-2 bg-emerald-500 text-white cursor-pointer font-semibold py-1 px-2" @click="handleDeposit">Deposit</button>
                 <div v-if="isError" class="text-font-500 text-lg">
                   {{ errorMessage }}
 
@@ -22,7 +22,7 @@
         :listing="listing"
           ><div class="flex gap-4">
           <button 
-            class="bg-green-600 text-white rounded-sm py-1 px-2 cursor-pointer" 
+            class="bg-emerald-500 text-white rounded-sm py-1 px-2 cursor-pointer" 
             
          @click="handleBuy(listing)" >
             Buy
@@ -128,6 +128,7 @@ const handleBuy = async (listing) => {
       disputeCode: disputeCode,
       sellerApproved: false,
       buyerApproved: false,
+      status: 'pending',
       refunded: false
     })
     const buyerRef = doc(db, 'users', user.uid)

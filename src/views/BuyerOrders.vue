@@ -39,7 +39,8 @@ const handleConfirm = async (order) =>{
     try {
         const orderRef = doc(db, 'orders', order.id)
         await updateDoc(orderRef, {
-            buyerApproved: true
+            buyerApproved: true,
+            status: 'completed'
         })
         const adminQ = query(collection(db, 'users'),
     where('role', '==', 'admin'))
@@ -65,11 +66,9 @@ const handleConfirm = async (order) =>{
 
         await updateDoc(sellerRef, {
             balance: (sellerData.balance || 0 ) + price
-        })
-
-        ordersStore.sellerConfirmedOrders = ordersStore.sellerConfirmedOrders.filter(
-      o => o.id !== order.id
-    )
+        }) 
+        
+        
         
     } catch (err){
         console.log('Error kod confirmanja', err)
