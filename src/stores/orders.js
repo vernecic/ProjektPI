@@ -11,7 +11,8 @@ export const useOrdersStore = defineStore('orders', ()=>{
         try {
             const orderQ = query(collection(db, 'orders'),
         where('seller', '==', seller),
-        where('sellerApproved', '==', false))
+        where('sellerApproved', '==', false),
+        where('status', '==', 'pending'))
         
         const querySnap = await getDocs(orderQ)
         orders.value = querySnap.docs.map(doc =>({
@@ -41,7 +42,7 @@ export const useOrdersStore = defineStore('orders', ()=>{
         throw err
     }
 }   
-    const fetchSellerApproved = async(buyer) => {
+const fetchSellerApproved = async(buyer) => {
         try {
         
             const confirmedQ = query(
@@ -63,12 +64,31 @@ export const useOrdersStore = defineStore('orders', ()=>{
         } catch (err){
             console.error('Greška kod dohvaćanja ordera: ', err)
         }
-    }
+}
+
+
+const fetchDisputedOrders = async() =>{
+        try {
+            const orderQ = query(collection(db, 'orders'),
+        where('status', '==', 'disputed'))
+
+        const querySnap = await getDocs(orderQ)
+        orders.value = querySnap.docs.map(doc =>({
+            id: doc.id,
+            ...doc.data()
+        })
+        )
+        } catch (err){
+            console.log('Error pri dohvaćanju ordera:', err)
+        }
+
+}
     return {
         orders,
         fetchSellerOrders,
         fetchBuyerOrders,
         sellerConfirmedOrders,
-        fetchSellerApproved
+        fetchSellerApproved,
+        fetchDisputedOrders
     }
 })

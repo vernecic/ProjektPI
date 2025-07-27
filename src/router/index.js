@@ -11,6 +11,7 @@ import AdminFeed from "@/views/AdminFeed.vue";
 import CreateListing from "@/views/CreateListing.vue"
 import SellerOrders from "@/views/SellerOrders.vue";
 import BuyerOrders from "@/views/BuyerOrders.vue";
+import AdminDisputes from "@/views/AdminDisputes.vue";
 
 const routes = [
   {
@@ -48,6 +49,10 @@ const routes = [
   {
     path: '/buyer-orders',
     component: BuyerOrders
+  },
+  {
+    path: '/disputes',
+    component: AdminDisputes
   }
 
 ];
@@ -81,26 +86,31 @@ router.beforeEach(async (to, from, next) => {
       await userStore.fetchRole(user.uid);
     } catch (error) {
       console.error('Greška s dohvatom uloge', error);
-      return next('/login');
+      return next(false);
     }
   }
   if (to.path === '/buyer-feed' && userStore.role !== 'buyer') {
-    userStore.clearUser()
-    return next('/login');
+    
+    return next(false);
     
   }
    if (to.path === '/create-listing' && userStore.role !== 'seller') {
-    userStore.clearUser()
-    return next('/login');
+    
+    return next(false);
     
   }
   if (to.path === '/seller-feed' && userStore.role !== 'seller') {
-    userStore.clearUser()
-    return next('/login');
+    
+    return next(false);
   }
   if (to.path === '/admin-feed' && userStore.role !== 'admin') {
-    userStore.clearUser()
-    return next('/login');
+    
+    return next(false);
+  }
+  {
+    if(to.path === '/disputes' && userStore.role !== 'admin'){
+      return next(false)
+    }
   }
   next();
 });

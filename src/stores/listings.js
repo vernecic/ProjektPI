@@ -31,7 +31,7 @@ export const useListingsStore = defineStore('listings', () =>{
             collection(db, 'listings'),
             where('approved', '==', true),
             where('seller', '==', userStore.username),
-            where('buyer', '==', false)
+            where('buyer', '==', null)
         );
     }
 

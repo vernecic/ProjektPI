@@ -2,7 +2,7 @@
   <AdminNavbar />
 
   <div class="p-6 max-w-2xl mx-auto ">
-    <h1 class="text-2xl font-bold mb-5">Listings</h1>
+    <h1 class="text-2xl font-bold mb-5">Pending listings</h1>
   
     <div class="grid  lg:grid-cols-3 gap-4">
       <ListingCard

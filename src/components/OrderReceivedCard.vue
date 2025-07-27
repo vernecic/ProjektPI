@@ -5,7 +5,7 @@
                     <div class="">
                         <p class="text-sm">
                             Confirm shipment?
-                        </p><button class="bg-emerald-500 py-1 px-2 rounded  font-semibold cursor-pointer shadow-md hover:-translate-y-0.5 transition duration-200 hover:shadow-lg" @click="$emit('confirm', order)">Confirm </button></div>
+                        </p><button class="bg-emerald-500 text-white py-1 px-2 rounded  font-semibold cursor-pointer shadow-md hover:-translate-y-0.5 transition duration-200 hover:shadow-lg" @click="$emit('confirm', order)">Confirm </button></div>
                 </div>
 </template>
 

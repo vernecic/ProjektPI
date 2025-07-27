@@ -5,8 +5,8 @@
             <h1 class="text-2xl font-semibold">Orders</h1>
           </div> 
           <div class="mt-5">
-                <OrderMadeCard v-for="order in ordersStore.orders" :key="order.orderId" :order="order"></OrderMadeCard>
-                <SellerConfirmedOrder v-for="order in ordersStore.sellerConfirmedOrders" :key="order.orderId" :order="order" @confirm="handleConfirm"></SellerConfirmedOrder>
+                <OrderMadeCard v-for="order in ordersStore.orders" :key="order.id" :order="order" @dispute="handleDispute"></OrderMadeCard>
+                <SellerConfirmedOrder v-for="order in ordersStore.sellerConfirmedOrders" :key="order.id" :order="order" @confirm="handleConfirm"></SellerConfirmedOrder>
           </div>
             
           </div>
@@ -17,7 +17,7 @@ import BuyerNavbar from '@/components/BuyerNavbar.vue';
 import { useUserStore } from '@/stores/users'
 import { useOrdersStore } from '@/stores/orders';
 import { onMounted } from 'vue'
-import { collection, doc, updateDoc, getDocs } from 'firebase/firestore'
+import { collection, doc, updateDoc, getDocs, getDoc } from 'firebase/firestore'
 import { db } from '@/firebase/config'
 import { query, where } from "firebase/firestore";
 
@@ -73,5 +73,23 @@ const handleConfirm = async (order) =>{
     } catch (err){
         console.log('Error kod confirmanja', err)
     }
+}
+
+const handleDispute = async (order) =>{
+    try {
+        const orderRef = doc(db, 'orders', order.id)
+        const orderSnap = await getDoc(orderRef)
+        console.log(order.id)
+
+        if (orderSnap.exists()) {
+        await updateDoc(orderRef, {
+        status: 'disputed'
+        })
+}
+        
+    } catch (err){
+        console.log('Error while disputing', err)
+    }
+
 }
 </script>
