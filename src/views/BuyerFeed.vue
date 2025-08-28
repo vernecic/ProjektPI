@@ -3,9 +3,22 @@
     <div class="p-6 max-w-2xl mx-auto">
         <div class="mt-5">
           <h1 class="font-bold text-2xl mb-5">Listings</h1>
+          <div class="mb-2 flex gap-2 items-center">
+            <h2>Filter</h2> 
+            <div class="flex flex-col relative">
+
+            <div @click="openFilterOptions = !openFilterOptions" class="cursor-pointer border border-slate-400 py-1 px-2 rounded flex gap-1"> 
+              <span>{{ curFilter }}</span><img src="../assets/keydown.svg" alt="" class="transition duration-200" :class="openFilterOptions ? 'rotate-180' : 'rotate-0'">
+               </div>
+               <div v-if="openFilterOptions" class="flex flex-col absolute border border-slate-400 py-1 px-2 rounded top-full bg-white mt-1">
+                <div v-for="filter in filterOptions" class="cursor-pointer hover:bg-slate-100 text-sm" @click="chooseFilter(filter)">{{ filter }}</div>
+              </div></div>
+              
+           
+          </div>
           <div class="grid  lg:grid-cols-3 gap-4">
           <ListingCard
-        v-for="listing in listings"
+        v-for="listing in filteredListings"
         :key="listing.id"
         :listing="listing"
           ><div class="flex gap-4">
@@ -25,7 +38,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, computed } from 'vue'
 import BuyerNavbar from '@/components/BuyerNavbar.vue'
 import { useUserStore } from '@/stores/users'
 import { collection, doc, updateDoc, addDoc, query, where, getDocs } from 'firebase/firestore'
@@ -37,6 +50,26 @@ import { useListingsStore } from '@/stores/listings'
 
 const listingsStore = useListingsStore()
 const listings = listingsStore.listings
+
+const curFilter = ref('Default')
+const filterOptions = ['Default', 'Price Up', 'Price Down']
+const openFilterOptions = ref(false)
+
+const filteredListings = computed(() =>{
+  if(curFilter.value === 'Price Up'){
+    return [...listings].sort((a,b) => a.price - b.price)
+  } else if (curFilter.value === 'Price Down'){
+    return [...listings].sort((a,b) => b.price - a.price)
+  }
+  return listings
+})
+
+const chooseFilter = (filter) =>{
+  curFilter.value = filter
+  openFilterOptions.value = false
+
+} 
+
 
 
 onMounted(async () => {

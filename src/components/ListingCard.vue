@@ -3,7 +3,7 @@
     <img
       :src="listing.imageUrl"
       alt="Listing Image"
-      class="w-full h-48 object-center rounded-t mb-1"
+      class="w-full h-48 object-fit rounded-t-lg mb-1"
     />
     <div class="p-2">
 
