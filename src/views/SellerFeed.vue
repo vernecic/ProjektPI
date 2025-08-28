@@ -1,6 +1,6 @@
 <template>
     <SellerNavbar/>
-        <div class="flex items-center justify-center flex-col">
+        <div class="p-6 max-w-2xl mx-auto">
         <div class="mt-5">
             <router-link to="/create-listing">
             <button class="rounded bg-blue-500 text-white py-1 px-2 text-xl cursor-pointer">Add listing</button></router-link>
