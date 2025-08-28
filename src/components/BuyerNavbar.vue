@@ -28,7 +28,7 @@
                      <p>Balance: <span class="font-semibold">{{ balance }}€</span></p>
                     <input type="number" v-model="amount" class="border rounded w-24">
                     <div>
-                      <button class="py-1 px-2 bg-emerald-400 rounded cursor-pointer" @click="handleDeposit">Deposit</button>
+                      <button class="py-1 px-2 bg-green-500 rounded cursor-pointer" @click="handleDeposit">Deposit</button>
                     </div>
                     <div v-if="isError">
                       {{ errorMessage }}

@@ -10,7 +10,7 @@
         :listing="listing"
           ><div class="flex gap-4">
           <button 
-            class="bg-emerald-500 text-white rounded-sm py-1 px-2 cursor-pointer hover:-translate-y-0.5 transition duration-200 shadow" 
+            class="bg-green-500 text-white rounded-sm py-1 px-2 cursor-pointer hover:bg-green-600 transition duration-200 shadow" 
             
          @click="handleBuy(listing)" >
             Buy

@@ -11,13 +11,13 @@
         :listing="listing"
       ><div class="flex gap-4">
           <button 
-            class="bg-green-600 text-white rounded-sm py-1 px-2 cursor-pointer" 
+            class="bg-green-500 text-white rounded-sm py-1 px-2 cursor-pointer transition duration-200 hover:bg-green-600 shadow" 
             @click="handleApprove(listing)"
           >
             Approve
           </button>
           <button 
-            class="bg-red-600 text-white rounded-sm py-1 px-2 cursor-pointer"
+            class="bg-red-500 text-white rounded-sm py-1 px-2 cursor-pointer transition duration-200 hover:bg-red-600 shadow"
             @click="handleReject(listing)"
           >
             Reject

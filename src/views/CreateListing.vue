@@ -36,7 +36,7 @@
 
         </div>
         <div class="flex mt-5 justify-center">
-          <button type="submit" class="bg-blue-500 text-white py-1 px-2 rounded-md text-lg " >
+          <button type="submit" class="bg-blue-500 text-white py-1 px-2 rounded-md text-lg cursor-pointer " >
             Submit
           </button>
         </div>
