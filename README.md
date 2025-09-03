@@ -1,29 +1,12 @@
-# primjer_vue_aplikacije
+Boovljak
+by Vid Ernečić
 
-This template should help get you started developing with Vue 3 in Vite.
+[Fakultet Informatike u Puli](https://fipu.unipu.hr/fipu)
+Kolegij: [Programsko Inžinjerstvo](https://fiputreca.notion.site/Programsko-in-enjerstvo-e353945331df468e8382cdad1e91c4b8)
 
-## Recommended IDE Setup
+Mentor: doc. dr. sc. [Nikola Tanković](ntankovic.unipu.hr)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+Korisnici su kupac, prodavač i admin. 
+Prodavač može postaviti proizvod za prodaju koji admin mora prihvatiti/potvrditi.
+Kupac, nakon može dodati novac na svoj račun i kupiti jedan od potvrđenih proizvoda.
+Prodavač zatim mora potvrditi da je poslao paket, nakon čega kupac potvrđuje primitak i tek u tom slučaju prodavač prima novac na svoj račun. Ukoliko prodavač ne pošalje proizvod, kupac može napraviti "dispute". U tom slučaju admin može vratiti novac kupcu.
