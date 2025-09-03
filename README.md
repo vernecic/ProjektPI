@@ -2,7 +2,8 @@ Boovljak
 by Vid Ernečić
 
 [Fakultet Informatike u Puli](https://fipu.unipu.hr/fipu)
-Kolegij: [Programsko Inžinjerstvo](https://fiputreca.notion.site/Programsko-in-enjerstvo-e353945331df468e8382cdad1e91c4b8)
+
+  Kolegij: [Programsko Inžinjerstvo](https://fiputreca.notion.site/Programsko-in-enjerstvo-e353945331df468e8382cdad1e91c4b8)
 
 Mentor: doc. dr. sc. [Nikola Tanković](ntankovic.unipu.hr)
 
