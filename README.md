@@ -13,3 +13,5 @@ Kupac, nakon može dodati novac na svoj račun i kupiti jedan od potvrđenih pro
 Prodavač zatim mora potvrditi da je poslao paket, nakon čega kupac potvrđuje primitak i tek u tom slučaju prodavač prima novac na svoj račun. Ukoliko prodavač ne pošalje proizvod, kupac može napraviti "dispute". U tom slučaju admin može vratiti novac kupcu.
 
 Prototip: https://www.figma.com/proto/QA2iC3auBzeHJv2qHL6oMT/Prototip-za-ProjektPI?node-id=3-4&starting-point-node-id=3%3A4
+
+Netlify stranica: https://boovljak.netlify.app/
