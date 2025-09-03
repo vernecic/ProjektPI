@@ -5,7 +5,7 @@ by Vid Ernečić
 
   Kolegij: [Programsko Inžinjerstvo](https://fiputreca.notion.site/Programsko-in-enjerstvo-e353945331df468e8382cdad1e91c4b8)
 
-Mentor: doc. dr. sc. [Nikola Tanković](https://fiputreca.notion.site/Programsko-in-enjerstvo-e353945331df468e8382cdad1e91c4b8)
+Mentor: doc. dr. sc. [Nikola Tanković](https://fiputreca.notion.site/Kontakt-stranica-875574d1b92248b1a8e90dae52cd29a9)
 
 Korisnici su kupac, prodavač i admin. 
 Prodavač može postaviti proizvod za prodaju koji admin mora prihvatiti/potvrditi.
