@@ -1,5 +1,5 @@
 <template>
-        <div class="border border-zinc-400 p-2 flex flex-col space-y-2 my-2 rounded-md shadow">
+        <div class="p-2 flex flex-col space-y-2 my-2 rounded-md shadow">
                     <div>
                         <span class="font-bold">{{order.seller}}</span> has confirmed the shipment of your order <span class="font-bold">{{order.title}}</span>!
                     </div>

@@ -1,5 +1,5 @@
 <template>
-          <div class="border border-zinc-400 p-2 flex flex-col space-y-2 my-2 rounded-md shadow-md">
+          <div class=" p-2 flex flex-col space-y-2 my-2 rounded-md shadow">
                     <div><span class="font-bold">{{ order.buyer }}</span> made an order for <span class="font-bold">{{ order.title }}</span> - <span class="font-bold">{{ order.price }}€</span></div>
                     <div class="text-xs">ID: {{ order.listingId }}</div>
                     <div class="">
